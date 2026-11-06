@@ -1,0 +1,128 @@
+{
+  "version": "1.0",
+  "note": "Structure exacte de l'espace Notion. Le prompt d'installation la crée avec le connecteur Notion. Les noms de propriétés sont utilisés tels quels par les agents : ne pas les renommer.",
+  "parent_page": {
+    "title": "Recherche CDI",
+    "icon": "🎯",
+    "children_order": ["Critères et entreprises cibles", "Offres", "Journal d'analyse", "Entonnoir", "Registre de calibrage", "Runs"]
+  },
+  "pages": [
+    {
+      "title": "Critères et entreprises cibles",
+      "icon": "🧭",
+      "content_from": "config/criteres_template.md, rempli avec les réponses au questionnaire"
+    },
+    {
+      "title": "Registre de calibrage",
+      "icon": "📏",
+      "content": "Introduction : règles qui ajustent la notation de Hugo (au plus 2 points). Statuts : Proposée (par la Revue), Validée (par le candidat), Refusée. Hugo n'applique que les Validées. Puis un tableau aux colonnes : Numéro | Date | Constat | Règle | Effet attendu | Statut. Lignes initiales : R1 « Fiche partielle : critère A plafonné à 5 » Validée ; R2 « Niveau non précisé dans l'annonce : C = 1 » Validée ; puis R3 et R4 issues de la question 29 du questionnaire (ce qui fait dire oui, ce qui fait dire non), Validées si le candidat les confirme."
+    },
+    {
+      "title": "Entonnoir",
+      "icon": "📊",
+      "content": "Un tableau titré « Entonnoir au JJ/MM/AAAA » avec 8 colonnes : Analysées | Transmises à Hugo | Notées | Envoyées | Postulées | Entretiens | Offres reçues | Refus. Une ligne, initialisée à 0. Noé le remplace chaque soir."
+    }
+  ],
+  "databases": [
+    {
+      "title": "Journal d'analyse",
+      "icon": "📥",
+      "role": "Une ligne par offre vue par Léa, retenue ou non. Le contenu de chaque page = le texte intégral de l'annonce. Zone de transit entre les agents.",
+      "properties": {
+        "Offre": {"type": "title", "format": "Entreprise | Poste"},
+        "Entreprise": {"type": "rich_text"},
+        "Poste": {"type": "rich_text"},
+        "Clé": {"type": "rich_text", "format": "entreprise|poste en minuscules, sans accents, sans (H/F), sans ville"},
+        "Famille": {"type": "select", "options": "les familles de la section 1 des Critères, plus « Autre »"},
+        "Source": {"type": "select", "options": ["Alerte LinkedIn", "Alerte Welcome to the Jungle", "Alerte Indeed", "Alerte APEC", "Alerte autre", "Indeed connecteur", "Page carrières / ATS", "Recherche web", "LinkedIn navigateur"]},
+        "Lien offre": {"type": "url"},
+        "Date analyse": {"type": "date"},
+        "Date publication": {"type": "date"},
+        "Localisation": {"type": "rich_text"},
+        "Télétravail": {"type": "rich_text"},
+        "Expérience minimum requise": {"type": "rich_text"},
+        "Salaire affiché": {"type": "rich_text"},
+        "Fiche lue": {"type": "select", "options": ["Texte intégral", "Partielle", "Non"]},
+        "Étape": {"type": "select", "options": ["À noter", "À briefer", "En veille", "Non retenue", "Analysée", "Notée", "Envoyée", "Postulée", "Entretien", "Offre reçue", "Erreur"]},
+        "Résultat": {"type": "select", "options": ["Transmise à Hugo", "Non notée", "Notée en réserve", "Notée non retenue", "Envoyée dans le top"]},
+        "Raison de non-notation": {"type": "select", "options": ["Pas un CDI", "Intitulé exclu", "Chasse / new business", "Trop senior", "Trop d'années demandées", "Métier hors périmètre", "Entreprise hors périmètre", "Entreprise trop petite", "Entreprise exclue", "Secteur exclu", "Lieu hors périmètre", "Publiée il y a trop longtemps", "Offre fermée", "Page introuvable", "Doublon", "Au-delà du plafond", "Note insuffisante"]},
+        "Pourquoi écartée": {"type": "rich_text"},
+        "Alerte employeur": {"type": "rich_text"},
+        "Score /20": {"type": "number"},
+        "Verdict Hugo": {"type": "select", "options": ["Top", "Veille", "Plafonnée fiche partielle", "Non retenue", "Dossier déjà ouvert"]},
+        "Détail notation": {"type": "rich_text"},
+        "Brief": {"type": "rich_text"},
+        "Mon score": {"type": "number", "note": "Rempli par le candidat pendant la calibration"},
+        "Mon avis": {"type": "rich_text", "note": "Rempli par le candidat : pourquoi il n'est pas d'accord avec Hugo"},
+        "Run Léa": {"type": "rich_text"},
+        "Run Hugo": {"type": "rich_text"},
+        "Run Camille": {"type": "rich_text"},
+        "Lien Offres": {"type": "url"}
+      },
+      "views": [
+        {"name": "Aujourd'hui", "type": "table", "filter": "Date analyse = aujourd'hui", "sort": "Score /20 décroissant"},
+        {"name": "Écartées", "type": "table", "filter": "Résultat = Non notée", "group_by": "Raison de non-notation"},
+        {"name": "Par étape", "type": "board", "group_by": "Étape"},
+        {"name": "Calibration", "type": "table", "filter": "Score /20 non vide et Date analyse dans les 7 derniers jours", "columns": ["Offre", "Score /20", "Verdict Hugo", "Mon score", "Mon avis", "Détail notation", "Lien offre"]}
+      ]
+    },
+    {
+      "title": "Offres",
+      "icon": "⭐",
+      "role": "Les offres retenues (Top et réserves), briefées par Camille. C'est ici que le candidat décide et que Noé suit les candidatures.",
+      "properties": {
+        "Offre": {"type": "title"},
+        "Entreprise": {"type": "rich_text"},
+        "Poste": {"type": "rich_text"},
+        "Clé": {"type": "rich_text"},
+        "Famille": {"type": "select", "options": "comme le Journal"},
+        "Lien offre": {"type": "url"},
+        "Score /20": {"type": "number"},
+        "Pourquoi ce fit": {"type": "rich_text"},
+        "Points de vigilance": {"type": "rich_text"},
+        "Effectif": {"type": "rich_text"},
+        "Dernière levée": {"type": "rich_text"},
+        "Localisation": {"type": "rich_text"},
+        "Télétravail": {"type": "rich_text"},
+        "Salaire affiché": {"type": "rich_text"},
+        "Expérience requise": {"type": "rich_text"},
+        "Source": {"type": "rich_text"},
+        "Date publication": {"type": "date"},
+        "Envoyée le": {"type": "date"},
+        "Ma décision": {"type": "select", "options": ["À regarder", "Je postule", "Postulé", "Pas pour moi"]},
+        "Mon commentaire": {"type": "rich_text"},
+        "Statut candidature": {"type": "select", "options": ["Pas encore postulé", "Postulé", "Accusé de réception", "Entretien", "Test / Étude de cas", "Offre reçue", "Refus", "Sans réponse 21 j"]},
+        "Dernier événement": {"type": "rich_text"},
+        "Prochaine relance": {"type": "date"},
+        "Lien Journal": {"type": "url"}
+      },
+      "views": [
+        {"name": "À regarder", "type": "table", "filter": "Ma décision = À regarder", "sort": "Score /20 décroissant"},
+        {"name": "Mes candidatures", "type": "board", "group_by": "Statut candidature", "filter": "Statut candidature ≠ Pas encore postulé"},
+        {"name": "Relances", "type": "table", "filter": "Prochaine relance ≤ aujourd'hui"}
+      ]
+    },
+    {
+      "title": "Runs",
+      "icon": "🧾",
+      "role": "Journal d'exécution : chaque agent écrit une ligne à chaque passage, même en échec.",
+      "properties": {
+        "Run": {"type": "title", "format": "<Agent> AAAA-MM-JJ HH:MM"},
+        "Agent": {"type": "select", "options": ["Léa", "Hugo", "Camille", "Noé", "Revue", "Inès", "Installation"]},
+        "Horodatage": {"type": "date", "with_time": true},
+        "Mode": {"type": "select", "options": ["pause", "calibration", "production"]},
+        "Statut run": {"type": "select", "options": ["OK", "Partiel", "Échec", "Rien à faire"]},
+        "Lues": {"type": "number"},
+        "Écrites": {"type": "number"},
+        "Écartées": {"type": "number"},
+        "Erreurs": {"type": "number"},
+        "Résumé": {"type": "rich_text"},
+        "Contrôles": {"type": "rich_text"},
+        "À signaler": {"type": "rich_text"}
+      },
+      "views": [
+        {"name": "7 derniers jours", "type": "table", "filter": "Horodatage dans les 7 derniers jours", "sort": "Horodatage décroissant"}
+      ]
+    }
+  ]
+}
