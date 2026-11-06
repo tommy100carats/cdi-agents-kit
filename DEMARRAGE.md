@@ -68,6 +68,24 @@ Tu notes toi-même 20 offres, tu compares à Hugo, et tu corriges. Après ça, t
 | Le soir | Tu lis le point de Noé s'il y en a un (il ne t'écrit que s'il y a quelque chose) | Noé lit Gmail et met à jour |
 | Le dimanche | Tu lis le bilan, tu réponds « Valide R4 » ou « Refuse R4 » aux règles proposées | La Revue mesure et propose |
 
+## Étape 8. Ton CV optimisé, avec Inès (à la demande)
+
+Inès n'est pas planifiée : tu l'appelles quand tu veux, dans une conversation de ton Projet Claude.
+Son prompt, déjà personnalisé par l'installation, est dans ta page Notion **« Prompts des agents (sauvegarde) »**, section Inès.
+
+**Ton CV de référence (à faire une fois, après l'installation)**
+1. Nouvelle conversation dans ton Projet.
+2. Colle le prompt d'Inès, puis écris : « Mode référence : fais-moi mon CV de référence. »
+3. Elle te pose quelques questions sur ce qui manque dans ton CV actuel, puis te livre le CV, un tableau de ce qui a changé et la liste de ce qui reste à travailler.
+4. Relis, corrige ce qui ne te ressemble pas, et **remplace l'ancien CV dans les fichiers du Projet** : Hugo notera mieux.
+
+**Un CV pour une offre précise (avant chaque candidature importante)**
+1. Ouvre l'offre dans ta base Notion Offres et copie le lien de la fiche (bouton « Partager », puis « Copier le lien »).
+2. Nouvelle conversation dans ton Projet, colle le prompt d'Inès, puis : « Mode offre, voici l'offre : <lien> ». Tu peux aussi coller directement le texte de l'annonce.
+3. Demande « en PDF » si tu veux un fichier à joindre tout de suite.
+
+Règle d'Inès : elle réorganise et reformule tes vraies expériences, elle n'invente jamais rien. Si l'offre demande quelque chose que tu n'as pas, elle te le dit et te propose comment en parler en entretien.
+
 ## Si quelque chose ne marche pas
 
 Regarde [`docs/depannage.md`](docs/depannage.md). Le réflexe : ouvrir la base **Runs** dans Notion.
