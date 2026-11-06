@@ -39,7 +39,7 @@ Suis la partie A de [`02_connecteurs_et_alertes.md`](02_connecteurs_et_alertes.m
 
 - [ ] Dans Claude, crée un **Projet** nommé « Recherche CDI ».
 - [ ] Dans les fichiers du projet, ajoute **tes CV en PDF**. Nomme-les clairement, par exemple `CV_Prenom_Nom_SalesOps.pdf`.
-- [ ] Ajoute aussi ce dossier `cdi-agents-kit` (ou au minimum le dossier `agents/`, `config/`, `notion/` et `gabarits/`) dans les fichiers du projet. Si le projet n'accepte pas de dossier, ajoute les fichiers un par un, ou donne à Claude le lien GitHub du kit.
+- [ ] Rien d'autre à télécharger : le prompt d'installation donne à Claude le lien du kit, et il lit lui-même les fichiers sur GitHub. Pas besoin de compte GitHub.
 
 ## Étape 5. Lancer l'installation (30 min, Claude fait le travail)
 

@@ -1,7 +1,8 @@
 # Prompt d'installation
 
 **Mode d'emploi.** Ouvre une nouvelle conversation **dans ton Projet Claude « Recherche CDI »**
-(celui qui contient tes CV et les fichiers du kit), copie tout le bloc ci-dessous, colle-le, envoie.
+(celui qui contient tes CV). Sur GitHub, passe la souris sur le bloc gris ci-dessous : un bouton
+« copier » (deux petits carrés) apparaît en haut à droite. Clique dessus, colle dans Claude, envoie.
 Claude va te poser des questions, puis tout construire. Compte environ 30 minutes.
 
 ---
@@ -10,7 +11,7 @@ Claude va te poser des questions, puis tout construire. Compte environ 30 minute
 Tu vas installer pour moi « cdi-agents-kit », une chaîne de 5 agents planifiés qui cherche un CDI à ma place : Léa (sourcing), Hugo (notation sur 20), Camille (brief et mail du matin), Noé (suivi Gmail du soir), Revue (calibrage du dimanche). Tout vit dans Notion. Suis les étapes dans l'ordre, montre-moi où tu en es avec une liste de tâches, et demande ma validation aux points marqués VALIDATION. Ne saute aucune étape. N'utilise jamais de tiret long ni de demi-cadratin dans ce que tu écris.
 
 ÉTAPE 0, VÉRIFICATIONS. 
-(a) Retrouve les fichiers du kit : d'abord dans les fichiers de ce Projet (outil Projects), sinon demande-moi le lien GitHub du dépôt ou de coller les fichiers. Il te faut : config/criteres_template.md, config/exemple_rempli.md, notion/schema.json, agents/00_protocole_commun.md à agents/06_ines_cv.md, gabarits/mail_matin.html, calibration/CALIBRATION.md. Lis-les tous en entier avant de continuer.
+(a) Retrouve les fichiers du kit : ils sont sur le dépôt public https://github.com/tommy100carats/cdi-agents-kit (lis chaque fichier avec WebFetch sur https://raw.githubusercontent.com/tommy100carats/cdi-agents-kit/main/<chemin>). Si je t'ai donné un autre lien de dépôt, utilise-le. S'ils sont dans les fichiers de ce Projet, tu peux aussi les lire là. Il te faut : config/criteres_template.md, config/exemple_rempli.md, notion/schema.json, agents/00_protocole_commun.md à agents/06_ines_cv.md, gabarits/mail_matin.html, calibration/CALIBRATION.md. Lis-les tous en entier avant de continuer.
 (b) Vérifie que tu as accès à : Notion (cherche une page), Gmail (cherche mes 3 derniers mails), Indeed (optionnel), et à un outil de tâches planifiées (cherche-le avec ToolSearch si besoin). Si Notion, Gmail ou les tâches planifiées manquent, arrête-toi et dis-moi exactement quoi activer dans les paramètres de Claude.
 (c) Liste les CV en PDF présents dans les fichiers du Projet et lis-les. S'il n'y en a aucun, demande-moi d'en ajouter avant de continuer.
 (d) Regarde mes 30 derniers jours de Gmail pour repérer les expéditeurs d'alertes emploi (LinkedIn, Welcome to the Jungle, Indeed, APEC, HelloWork, JobTeaser, autres). Note les adresses exactes. S'il n'y en a aucune, dis-moi que mes alertes ne sont pas encore en place (voir 02_connecteurs_et_alertes.md) : on peut continuer, mais Léa sera moins efficace.
